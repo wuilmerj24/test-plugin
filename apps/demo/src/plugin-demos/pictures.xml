@@ -1,0 +1,9 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" xmlns:ps="@arepa/pictures" navigatingTo="navigatingTo" class="page">
+    <Page.actionBar>
+        <ActionBar title="pictures" icon="" class="action-bar">
+        </ActionBar>
+    </Page.actionBar>
+    <StackLayout>
+      <ps:Pictures itemTap="gridViewItemTap"/>
+    </StackLayout>
+</Page>

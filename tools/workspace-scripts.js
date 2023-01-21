@@ -55,12 +55,33 @@ module.exports = {
       },
     },
     '⚙️': {
-      script: `npx cowsay "@nativescript/* packages will keep your ⚙️ cranking"`,
-      description: '_____________  @nativescript/*  _____________',
+      script: `npx cowsay "@arepa/* packages will keep your ⚙️ cranking"`,
+      description: '_____________  @arepa/*  _____________',
     },
     // packages
     // build output is always in dist/packages
-    '@nativescript': {
+    '@arepa': {
+      // @arepa/picture
+      picture: {
+        build: {
+          script: 'nx run picture:build.all',
+          description: '@arepa/picture: Build',
+        },
+      },
+      // @arepa/picture-s
+      'picture-s': {
+        build: {
+          script: 'nx run picture-s:build.all',
+          description: '@arepa/picture-s: Build',
+        },
+      },
+      // @arepa/pictures
+      pictures: {
+        build: {
+          script: 'nx run pictures:build.all',
+          description: '@arepa/pictures: Build',
+        },
+      },
       'build-all': {
         script: 'nx run-many --target=build.all --all',
         description: 'Build all packages',
@@ -71,8 +92,20 @@ module.exports = {
       description: '_____________  Focus (VS Code supported)  _____________',
     },
     focus: {
+      picture: {
+        script: 'nx run picture:focus',
+        description: 'Focus on @arepa/picture',
+      },
+      'picture-s': {
+        script: 'nx run picture-s:focus',
+        description: 'Focus on @arepa/picture-s',
+      },
+      pictures: {
+        script: 'nx run pictures:focus',
+        description: 'Focus on @arepa/pictures',
+      },
       reset: {
-        script: 'nx g @nativescript/plugin-tools:focus-packages',
+        script: 'nx g @arepa/plugin-tools:focus-packages',
         description: 'Reset Focus',
       },
     },

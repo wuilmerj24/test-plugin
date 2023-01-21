@@ -20,7 +20,11 @@
       }
     ],
     "paths": {
-      "@demo/shared": ["tools/demo/index.ts"]
+      "@demo/shared": ["tools/demo/index.ts"],
+      "@arepa/*": ["packages/*"],
+      "@arepa/picture": ["packages/picture/index.d.ts"],
+      "@arepa/picture-s": ["packages/picture-s/index.d.ts"],
+      "@arepa/pictures": ["packages/pictures/index.d.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

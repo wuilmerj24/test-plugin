@@ -1,0 +1,65 @@
+{
+  "name": "pictures",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "library",
+  "sourceRoot": "packages/pictures",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "outputPath": "dist/packages/pictures",
+        "tsConfig": "packages/pictures/tsconfig.json",
+        "packageJson": "packages/pictures/package.json",
+        "main": "packages/pictures/index.d.ts",
+        "assets": [
+          "packages/pictures/*.md",
+          "packages/pictures/index.d.ts",
+          "LICENSE",
+          {
+            "glob": "**/*",
+            "input": "packages/pictures/platforms/",
+            "output": "./platforms/"
+          }
+        ],
+        "dependsOn": [
+          {
+            "target": "build.all",
+            "projects": "dependencies"
+          }
+        ]
+      }
+    },
+    "build.all": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["node tools/scripts/build-finish.ts pictures"],
+        "parallel": false
+      },
+      "outputs": ["dist/packages/pictures"],
+      "dependsOn": [
+        {
+          "target": "build.all",
+          "projects": "dependencies"
+        },
+        {
+          "target": "build",
+          "projects": "self"
+        }
+      ]
+    },
+    "focus": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["nx g @nativescript/plugin-tools:focus-packages pictures"],
+        "parallel": false
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": ["packages/pictures/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
